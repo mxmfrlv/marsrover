@@ -4,11 +4,11 @@ from time import sleep
 class WordCounter(object):
     """Counts words of a text and provides basic analysis of that."""
 
-    def __init__(self, sentence):
+    def __init__(self, sentence: str):
         self._words = sentence.split()
 
     @classmethod
-    def load(cls, text_file_name):
+    def load(cls, text_file_name: str):
         """Load words from a text file."""
         with open(text_file_name, "r") as text_file:
             return WordCounter(text_file.read())
@@ -21,16 +21,16 @@ class WordCounter(object):
         """Return unique words sorted alphabetically."""
         return sorted(set(self._words))
 
-    def contains_word(self, word):
+    def contains_word(self, word: str):
         return word in self._words
 
-    def count_of(self, word):
+    def count_of(self, word: str):
         tmp_sum = sum([1 for w in self._words if w == word])
         if tmp_sum > 0:
             return tmp_sum
         return None
 
-    def ratio_of(self, word):
+    def ratio_of(self, word: str):
         """Return ratio of this word's occurrence against all words."""
         count = self.count_of(word)
         if count is None:
