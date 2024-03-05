@@ -32,3 +32,11 @@ class DojoMarsRover(unittest.TestCase):
         marsRover.command("R")
         
         self.assertEqual(marsRover.getCoordinates(), [0, 0,"E"])
+
+    def test_shouldBeOn2_2AfterMMRMM(self):
+        marsRover = MarsRover()
+        
+        marsRover.command("MMRMM")
+        
+        self.assertEqual(marsRover.getCoordinates()[:2], [2, 2])
+
