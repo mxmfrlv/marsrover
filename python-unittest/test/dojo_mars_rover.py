@@ -40,3 +40,16 @@ class DojoMarsRover(unittest.TestCase):
         
         self.assertEqual(marsRover.getCoordinates()[:2], [2, 2])
 
+    def test_earthIsRound(self):
+        earth_size=10
+        shouldbedict={"LM":[earth_size-1,0],"LLM":[0,earth_size-1],"M"*earth_size:[0,0],"R"+"M"*earth_size:[0,0]}
+        for command,result in shouldbedict.items():
+            with self.subTest(command=command,shouldbe=result):
+                #given:
+                marsRover = MarsRover() 
+                #when:
+                marsRover.command(command)
+                #then:
+                self.assertEqual(marsRover.getCoordinates()[:2], result)
+
+

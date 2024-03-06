@@ -7,12 +7,7 @@ class MarsRover(object):
         "S": "E",
         "E": "N"
     }
-    _turnRight = {
-        "N": "E",
-        "E": "S",
-        "S": "W",
-        "W": "N"
-    }
+    _turnRight = {v:k for k,v in _turnLeft.items()}
     _moveX = {
         "N": 0,
         "E": 1,
@@ -38,6 +33,11 @@ class MarsRover(object):
             if(c == "M"):
                 self.coordinates[0] += self._moveX[str(self.coordinates[2])]
                 self.coordinates[1] += self._moveY[str(self.coordinates[2])]
+                for i in range(2):
+                    if self.coordinates[i]<0:
+                        self.coordinates[i] += self.size
+                    elif self.coordinates[i]>=self.size:
+                        self.coordinates[i] -= self.size
         if(command == "X"):
             return "Error"
 
